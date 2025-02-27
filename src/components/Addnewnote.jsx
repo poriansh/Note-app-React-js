@@ -1,10 +1,9 @@
 import {useState} from "react";
-import { useDispatchNote } from "../context/Notescontext";
 
-function Addnewnote() {
+function Addnewnote({setnote}) {
   const [title, setTitle] = useState("");
   const [description, setdescription] = useState("");
-  const dispatch = useDispatchNote()
+
   const handelSubmit = (e) => {
     e.preventDefault();
 
@@ -19,8 +18,7 @@ function Addnewnote() {
     };
     setTitle("");
     setdescription("");
-
-    dispatch({type: "addnote", payload: newNote});
+    setnote((prev) => [...prev, newNote]);
   };
   return (
     <div className="add-new-note">

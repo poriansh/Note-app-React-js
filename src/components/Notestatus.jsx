@@ -1,28 +1,27 @@
-import { useNote } from "../context/Notescontext";
+
 import Massage from "./Massage";
 
-function Notestatus() {
-   const notes = useNote();
-  const allNotes = notes.length;
-  if (!allNotes)
+function Notestatus({notes}) {
+
+  if (!notes)
     return (
       <Massage>
         <h2>not note</h2>
       </Massage>
     );
-  const compeletNote = notes.filter((n) => n.compeleted).length;
-  const unCompeletNote = notes.filter((n) => !n.compeleted).length;
+  // const compeletNote = notes.filter((n) => n.compeleted).length;
+  // const unCompeletNote = notes.filter((n) => !n.compeleted).length;
 
   return (
     <ul className="note-status">
       <li>
-        All <span>{allNotes}</span>
+        All <span>{notes.length}</span>
       </li>
       <li>
-        Compelet <span>{compeletNote}</span>
+        Compelet <span>{`vvd`}</span>
       </li>
       <li>
-        unCompelet <span>{unCompeletNote}</span>
+        unCompelet <span>{`vfvbf`}</span>
       </li>
     </ul>
   );

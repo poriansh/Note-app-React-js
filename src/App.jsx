@@ -4,11 +4,10 @@ import Addnewnote from "./components/Addnewnote";
 import Notelist from "./components/Notelist";
 import Notestatus from "./components/Notestatus";
 import Noteheader from "./components/Noteheader";
-import NotesProvider from "./context/Notescontext";
 
 function App() {
   const [sortby, setsortby] = useState("latest");
-
+  const [notes, setnote] = useState([]);
   // const handelDeletenote = (id) => {
   //   // setnotes((prevnotes) => prevnotes.filter((note) => note.id !== id));
 
@@ -23,18 +22,16 @@ function App() {
   // };
 
   return (
-    <NotesProvider>
-      <div className="container">
-        <Noteheader sortby={sortby} onsort={(e) => setsortby(e.target.value)} />
-        <div className="note-app">
-          <Addnewnote />
-          <div className="note-container">
-            <Notestatus />
-            <Notelist sortby={sortby} />
-          </div>
+    <div className="container">
+      <Noteheader sortby={sortby} notes={notes} onsort={(e) => setsortby(e.target.value)} />
+      <div className="note-app">
+        <Addnewnote notes={notes} setnote={setnote} />
+        <div className="note-container">
+          <Notestatus notes={notes} />
+          <Notelist notes={notes} />
         </div>
       </div>
-    </NotesProvider>
+    </div>
   );
 }
 
