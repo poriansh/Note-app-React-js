@@ -1,16 +1,9 @@
 
-import Massage from "./Massage";
 
 function Notestatus({notes}) {
 
-  if (!notes)
-    return (
-      <Massage>
-        <h2>not note</h2>
-      </Massage>
-    );
-  // const compeletNote = notes.filter((n) => n.compeleted).length;
-  // const unCompeletNote = notes.filter((n) => !n.compeleted).length;
+  const compeletNote = notes.filter((n) => n.compeleted).length;
+  const unCompeletNote = notes.filter((n) => !n.compeleted).length;
 
   return (
     <ul className="note-status">
@@ -18,10 +11,10 @@ function Notestatus({notes}) {
         All <span>{notes.length}</span>
       </li>
       <li>
-        Compelet <span>{`vvd`}</span>
+        Compelet <span>{compeletNote}</span>
       </li>
       <li>
-        unCompelet <span>{`vfvbf`}</span>
+        unCompelet <span>{unCompeletNote}</span>
       </li>
     </ul>
   );

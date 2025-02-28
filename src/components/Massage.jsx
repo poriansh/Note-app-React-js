@@ -1,5 +1,5 @@
 function Massage({children}) {
-  return <div>{children}</div>;
+  return <div className="not-massage">{children}</div>;
 }
 
 // childern props 

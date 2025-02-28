@@ -4,7 +4,7 @@
   padding: 2rem;
   text-align: center;
 }
-body{
+body {
   overflow-x: hidden;
 }
 .note-header {
@@ -89,6 +89,14 @@ body{
   margin-bottom: 0.5rem;
   font-weight: 300;
 }
+.not-massage {
+  display: flex;
+  justify-content: end;
+}
+.not-massage h2 {
+  font-size: 1.2rem;
+  color: var(--text-700);
+}
 
 .note-item__header .actions {
   display: flex;
@@ -107,7 +115,7 @@ body{
   color: var(--text-300);
 }
 @media (min-width: 576px) {
-  .note-header{
+  .note-header {
     flex-direction: row;
   }
 }
@@ -118,7 +126,7 @@ body{
   .add-new-note {
     flex-grow: 1;
   }
-  
+
   .note-container {
     flex-grow: 4;
   }
