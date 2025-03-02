@@ -1,6 +1,6 @@
 
 
-function Noteheader({sortby, onsort, notes}) {
+function Noteheader({ onsort,sortby,notes}) {
 
   return (
     <div className="note-header">

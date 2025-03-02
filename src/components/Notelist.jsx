@@ -1,6 +1,6 @@
 import Massage from "./Massage";
 
-function Notelist({ notes, handelDelete }) {
+function Notelist({ notes, handelDelete,handelEdit }) {
    if (!notes.length)
      return (
        <Massage>
@@ -10,7 +10,7 @@ function Notelist({ notes, handelDelete }) {
   return (
     <div className="note-list">
       {notes.map((item) => (
-        <Noteitem key={item.id} handelDelete={handelDelete} note={item} />
+        <Noteitem key={item.id} handelEdit={handelEdit} handelDelete={handelDelete} note={item} />
       ))}
     </div>
   );
@@ -18,7 +18,7 @@ function Notelist({ notes, handelDelete }) {
 
 export default Notelist;
 
-function Noteitem({note, handelDelete}) {
+function Noteitem({note, handelDelete,handelEdit}) {
   return (
     <div className={`note-item ${note.compeleted ? "completed" : ""}`}>
       <div className="note-item__header">
@@ -28,7 +28,7 @@ function Noteitem({note, handelDelete}) {
         </div>
         <div className="actions">
           <button onClick={() => handelDelete(note.id)}>❌</button>
-          <input type="checkbox" />
+          <input onChange={() => handelEdit(note.id)} type="checkbox" />
         </div>
       </div>
       <div className="note-item__footer">
