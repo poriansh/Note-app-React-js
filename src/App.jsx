@@ -26,13 +26,11 @@ function App() {
   const handelSortNote = (a, b) => {
     switch (sortby) {
       case "latest":
-        return (
-          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-        );
+        return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
       case "earliest":
-        return (
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        );
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      case "compeleted":
+        return b.compeleted - a.compeleted;
     }
   };
   const sortNote = notes.sort(handelSortNote);
