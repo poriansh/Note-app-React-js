@@ -19,9 +19,6 @@ function App() {
       )
     );
   };
-  const handelSort = (e)=> {
-    setsortby(e.target.value)
-  }
 
   const handelSortNote = (a, b) => {
     switch (sortby) {
@@ -37,16 +34,12 @@ function App() {
 
   return (
     <div className="container">
-      <Noteheader notes={sortNote} sortby={sortby} onsort={handelSort} />
+      <Noteheader notes={sortNote} sortby={sortby} setsortby={setsortby} />
       <div className="note-app">
         <Addnewnote setnote={setnote} />
         <div className="note-container">
           <Notestatus notes={sortNote} />
-          <Notelist
-            notes={sortNote}
-            handelEdit={handelEdit}
-            handelDelete={handelDelete}
-          />
+          <Notelist notes={sortNote} handelEdit={handelEdit} handelDelete={handelDelete} />
         </div>
       </div>
     </div>
