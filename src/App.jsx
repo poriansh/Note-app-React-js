@@ -30,7 +30,7 @@ function App() {
         return b.compeleted - a.compeleted;
     }
   };
-  const sortNote = notes.sort(handelSortNote);
+  const sortNote = [...notes].sort(handelSortNote);
 
   return (
     <div className="container">
