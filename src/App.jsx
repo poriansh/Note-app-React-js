@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useReducer, useState} from "react";
 import "./style/App.css";
 import "./style/index.css";
 import Addnewnote from "./components/Addnewnote";
@@ -6,18 +6,34 @@ import Notelist from "./components/Notelist";
 import Notestatus from "./components/Notestatus";
 import Noteheader from "./components/Noteheader";
 
+function noteReducer(notes, {type, payload}) {
+  switch (type) {
+    case "add":
+      return [...notes, payload];
+    case "Delete":
+      return notes.filter((note) => note.id !== payload);
+    case "completed":
+      return notes.map((note) =>
+        note.id === payload ? {...note, compeleted: !note.compeleted} : note
+      );
+    default:
+      throw new Error("error dispatch");
+  }
+}
+
 function App() {
-  const [notes, setnote] = useState([]);
+  const [notes, dispatch] = useReducer(noteReducer, []);
   const [sortby, setsortby] = useState("latest");
+  const handeAddnotes = (newNote) => {
+    dispatch({type: "add", payload: newNote});
+  };
   const handelDelete = (id) => {
-    setnote(notes.filter((note) => note.id !== id));
+    // setnote(notes.filter((note) => note.id !== id));
+    dispatch({type: "Delete", payload: id});
   };
   const handelEdit = (id) => {
-    setnote(
-      notes.map((note) =>
-        note.id === id ? { ...note, compeleted: !note.compeleted } : note
-      )
-    );
+    // setnote(notes.map((note) => (note.id === id ? { ...note, compeleted: !note.compeleted } : note)));
+    dispatch({type: "completed", payload: id});
   };
 
   const handelSortNote = (a, b) => {
@@ -36,7 +52,7 @@ function App() {
     <div className="container">
       <Noteheader notes={sortNote} sortby={sortby} setsortby={setsortby} />
       <div className="note-app">
-        <Addnewnote setnote={setnote} />
+        <Addnewnote handeAddnotes={handeAddnotes} />
         <div className="note-container">
           <Notestatus notes={sortNote} />
           <Notelist notes={sortNote} handelEdit={handelEdit} handelDelete={handelDelete} />

@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function Addnewnote({setnote}) {
+function Addnewnote({ handeAddnotes}) {
   const [title, setTitle] = useState("");
   const [description, setdescription] = useState("");
 
@@ -18,7 +18,7 @@ function Addnewnote({setnote}) {
     };
     setTitle("");
     setdescription("");
-    setnote((prev) => [...prev, newNote]);
+    handeAddnotes(newNote);
   };
   return (
     <div className="add-new-note">
