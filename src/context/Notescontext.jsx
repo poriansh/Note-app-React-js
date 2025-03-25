@@ -1,39 +1,30 @@
-import {createContext, useContext, useReducer} from "react";
+import {createContext, useReducer} from "react";
 
-const Notescontext = createContext(null);
-const NotesDispatchcontext = createContext(null);
+export const NoteContext = createContext();
+export const DispatchContext = createContext();
 
-function notereducer(state, {type, payload}) {
+function noteReducer(notes, {type, payload}) {
   switch (type) {
-    case "addnote": {
-      return [...state, payload];
-    }
-    case "Delete": {
-      return state.filter((note) => note.id !== payload);
-    }
-    case "compelete": {
-      return state.map((note) =>
+    case "add":
+      return [...notes, payload];
+    case "Delete":
+      return notes.filter((note) => note.id !== payload);
+    case "completed":
+      return notes.map((note) =>
         note.id === payload ? {...note, compeleted: !note.compeleted} : note
       );
-    }
+    default:
+      throw new Error("error dispatch");
   }
 }
 
 
-function NotesProvider({children}) {
-  const [notes, dispatch] = useReducer(notereducer, []);
+
+export function NoteProvider({children}) {
+  const [notes, dispatch] = useReducer(noteReducer, []);
   return (
-    <Notescontext.Provider value={notes}>
-      <NotesDispatchcontext.Provider value={dispatch}>{children}</NotesDispatchcontext.Provider>
-    </Notescontext.Provider>
+    <NoteContext.Provider value={notes}>
+      <DispatchContext.Provider value={dispatch} >{children}</DispatchContext.Provider>
+    </NoteContext.Provider>
   );
-}
-
-export default NotesProvider;
-
-export function useNote() {
-  return useContext(Notescontext);
-}
-export function useDispatchNote() {
-  return useContext(NotesDispatchcontext);
 }

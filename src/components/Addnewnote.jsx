@@ -1,9 +1,10 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {DispatchContext} from "../context/Notescontext";
 
-function Addnewnote({ handeAddnotes}) {
+function Addnewnote() {
   const [title, setTitle] = useState("");
   const [description, setdescription] = useState("");
-
+  const dispatch = useContext(DispatchContext);
   const handelSubmit = (e) => {
     e.preventDefault();
 
@@ -18,7 +19,7 @@ function Addnewnote({ handeAddnotes}) {
     };
     setTitle("");
     setdescription("");
-    handeAddnotes(newNote);
+    dispatch({type: "add", payload: newNote});
   };
   return (
     <div className="add-new-note">

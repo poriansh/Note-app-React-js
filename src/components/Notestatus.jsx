@@ -1,7 +1,9 @@
+import { useContext } from "react";
+import { NoteContext } from "../context/Notescontext";
 
 
-function Notestatus({notes}) {
-
+function Notestatus() {
+  const notes = useContext(NoteContext)
   const compeletNote = notes.filter((n) => n.compeleted).length;
   const unCompeletNote = notes.filter((n) => !n.compeleted).length;
 

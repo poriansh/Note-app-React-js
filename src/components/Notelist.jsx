@@ -1,16 +1,30 @@
+import {useContext} from "react";
 import Massage from "./Massage";
+import {DispatchContext, NoteContext} from "../context/Notescontext";
 
-function Notelist({ notes, handelDelete,handelEdit }) {
-   if (!notes.length)
-     return (
-       <Massage>
-         <h2>not note</h2>
-       </Massage>
-     );
+function Notelist({sortby}) {
+  const notes = useContext(NoteContext);
+  const handelSortNote = (a, b) => {
+    switch (sortby) {
+      case "latest":
+        return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+      case "earliest":
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      case "compeleted":
+        return a.compeleted - b.compeleted;
+    }
+  };
+  const Sortnotes = [...notes].sort(handelSortNote);
+  if (!Sortnotes.length)
+    return (
+      <Massage>
+        <h2>not note</h2>
+      </Massage>
+    );
   return (
     <div className="note-list">
-      {notes.map((item) => (
-        <Noteitem key={item.id} handelEdit={handelEdit} handelDelete={handelDelete} note={item} />
+      {Sortnotes.map((item) => (
+        <Noteitem key={item.id} note={item} />
       ))}
     </div>
   );
@@ -18,7 +32,8 @@ function Notelist({ notes, handelDelete,handelEdit }) {
 
 export default Notelist;
 
-function Noteitem({note, handelDelete,handelEdit}) {
+function Noteitem({note}) {
+  const dispatch = useContext(DispatchContext);
   return (
     <div className={`note-item ${note.compeleted ? "completed" : ""}`}>
       <div className="note-item__header">
@@ -27,8 +42,8 @@ function Noteitem({note, handelDelete,handelEdit}) {
           <p className="desc">{note.description}</p>
         </div>
         <div className="actions">
-          <button onClick={() => handelDelete(note.id)}>❌</button>
-          <input onChange={() => handelEdit(note.id)} type="checkbox" />
+          <button onClick={() => dispatch({type: "Delete", payload: note.id})}>❌</button>
+          <input onChange={() => dispatch({type: "completed", payload: note.id})} type="checkbox" />
         </div>
       </div>
       <div className="note-item__footer">

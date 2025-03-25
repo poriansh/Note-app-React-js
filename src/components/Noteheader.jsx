@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { NoteContext } from "../context/Notescontext";
 
 
-function Noteheader({setsortby, sortby, notes}) {
+function Noteheader({ setsortby, sortby }) {
+  const notes = useContext(NoteContext)
+
   return (
     <div className="note-header">
       <h2>My Note({notes.length})</h2>
