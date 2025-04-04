@@ -27,14 +27,14 @@ function Addnewnote() {
       <form className="note-form" onSubmit={handelSubmit}>
         <input
           value={title}
-          onInput={(e) => setTitle(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
           type="text"
           className="text-field"
           placeholder="note title"
         />
         <input
           value={description}
-          onInput={(e) => setdescription(e.target.value)}
+          onChange={(e) => setdescription(e.target.value)}
           type="text"
           className="text-field"
           placeholder="note description"

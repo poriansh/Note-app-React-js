@@ -35,7 +35,7 @@ export default Notelist;
 function Noteitem({note}) {
   const dispatch = useContext(DispatchContext);
   return (
-    <div className={`note-item ${note.compeleted ? "completed" : ""}`}>
+    <div className={`note-item ${note.compeleted ? "completed" : ""}`} data-testid="note-item">
       <div className="note-item__header">
         <div>
           <p className="title">{note.title}</p>
