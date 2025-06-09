@@ -8,7 +8,7 @@ import Noteheader from "./components/Noteheader";
 import { NoteProvider } from "./context/Notescontext";
 
 function App() {
-  const [sortby, setsortby] = useState("latest");
+  const [sortby, setsortby] = useState<string>("latest");
   return (
     <NoteProvider>
       <div className="container">

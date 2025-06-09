@@ -1,17 +1,23 @@
 import {useContext} from "react";
 import Massage from "./Massage";
-import {DispatchContext, NoteContext} from "../context/Notescontext";
+import {DispatchContext, Note, NoteContext} from "../context/Notescontext";
 
-function Notelist({sortby}) {
+type NoteListProps = {
+  sortby: string;
+};
+
+function Notelist({sortby}: NoteListProps) {
   const notes = useContext(NoteContext);
-  const handelSortNote = (a, b) => {
+  const handelSortNote = (a: Note, b: Note) => {
     switch (sortby) {
       case "latest":
         return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
       case "earliest":
         return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
       case "compeleted":
-        return a.compeleted - b.compeleted;
+        return Number(a.compeleted) - Number(b.compeleted);
+      default:
+        return 0;
     }
   };
   const Sortnotes = [...notes].sort(handelSortNote);
@@ -23,7 +29,7 @@ function Notelist({sortby}) {
     );
   return (
     <div className="note-list">
-      {Sortnotes.map((item) => (
+      {Sortnotes.map((item: Note) => (
         <Noteitem key={item.id} note={item} />
       ))}
     </div>
@@ -32,7 +38,7 @@ function Notelist({sortby}) {
 
 export default Notelist;
 
-function Noteitem({note}) {
+function Noteitem({note}: {note: Note}) {
   const dispatch = useContext(DispatchContext);
   return (
     <div className={`note-item ${note.compeleted ? "completed" : ""}`} data-testid="note-item">

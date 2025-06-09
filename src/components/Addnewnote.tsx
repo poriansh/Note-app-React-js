@@ -5,7 +5,7 @@ function Addnewnote() {
   const [title, setTitle] = useState("");
   const [description, setdescription] = useState("");
   const dispatch = useContext(DispatchContext);
-  const handelSubmit = (e) => {
+  const handelSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!title || !description) return null;

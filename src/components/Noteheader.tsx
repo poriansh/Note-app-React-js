@@ -1,8 +1,12 @@
 import { useContext } from "react";
 import { NoteContext } from "../context/Notescontext";
 
+type NoteheaderProps = {
+  setsortby: (value: string) => void;
+  sortby: string;
+};
 
-function Noteheader({ setsortby, sortby }) {
+function Noteheader({ setsortby, sortby } : NoteheaderProps) {
   const notes = useContext(NoteContext)
 
   return (
