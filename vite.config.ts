@@ -6,6 +6,8 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
+      registerType: "autoUpdate",
+      injectRegister: "auto",
       manifest: {
         short_name: "Note App",
         name: "Note App",
@@ -35,6 +37,13 @@ export default defineConfig({
             src: "/web-app-manifest-512x512.png",
             type: "image/png",
             sizes: "512x512",
+            form_factor: "narrow",
+          },
+          {
+            src: "/320.png",
+            type: "image/png",
+            sizes: "320x320",
+            form_factor: "wide",
           },
         ],
       },
