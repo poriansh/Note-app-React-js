@@ -63,7 +63,7 @@ export default defineConfig({
           {
             src: "/320.png",
             type: "image/png",
-            sizes: "192x192",
+            sizes: "320x320",
             form_factor: "narrow",
           },
           {
