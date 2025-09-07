@@ -1,14 +1,14 @@
-import {useState} from "react";
+import { useState } from "react";
 import "./style/App.css";
-import "./style/index.css";
+import "./style/index.css"
 import Addnewnote from "./components/Addnewnote";
 import Notelist from "./components/Notelist";
 import Notestatus from "./components/Notestatus";
 import Noteheader from "./components/Noteheader";
-import { NoteProvider } from "./context/Notescontext";
+import {NoteProvider} from "./context/Notescontext";
 
 function App() {
-  const [sortby, setsortby] = useState<string>("latest");
+  const [sortby, setsortby] = useState("latest");
   return (
     <NoteProvider>
       <div className="container">

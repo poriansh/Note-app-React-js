@@ -1,4 +1,4 @@
-import React, {createContext, useReducer, ReactNode} from "react";
+import React, {createContext, useReducer, type ReactNode} from "react";
 
 export type Note = {
   title: string;

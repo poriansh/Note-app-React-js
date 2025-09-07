@@ -1,18 +1,7 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "module": "esnext",
-    "jsx": "react-jsx",
-    "moduleResolution": "node",
-    "strict": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "noImplicitAny": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src"]
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }
