@@ -32,16 +32,9 @@ export default defineConfig({
         description: "Note App Information",
         screenshots: [
           {
-            src: "/web-app-manifest-192x192.png",
-            type: "image/png",
-            sizes: "192x192",
-            form_factor: "narrow",
-          },
-          {
             src: "/web-app-manifest-512x512.png",
             type: "image/png",
             sizes: "512x512",
-            form_factor: "wide",
           },
         ],
       },
