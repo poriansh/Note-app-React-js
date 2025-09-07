@@ -18,12 +18,6 @@ export default defineConfig({
             purpose: "maskable",
           },
           {
-            src: "/320.png",
-            sizes: "320x320",
-            type: "image/png",
-            purpose: "maskable",
-          },
-          {
             src: "/web-app-manifest-512x512.png",
             sizes: "512x512",
             type: "image/png",
@@ -35,29 +29,6 @@ export default defineConfig({
         background_color: "#3367D6",
         scope: "/",
         theme_color: "#3367D6",
-        shortcuts: [
-          {
-            name: "Note App",
-            short_name: "Note App",
-            description: "View Note App",
-            url: "/",
-            icons: [{ src: "/web-app-manifest-512x512.png", sizes: "512x512" }],
-          },
-          {
-            name: "Note App",
-            short_name: "Note App",
-            description: "View Note App",
-            url: "/",
-            icons: [{ src: "/web-app-manifest-192x192.png", sizes: "192x192" }],
-          },
-          {
-            name: "Note App",
-            short_name: "Note App",
-            description: "View Note App",
-            url: "/",
-            icons: [{ src: "/320.png", sizes: "320x320" }],
-          },
-        ],
         description: "Note App Information",
         screenshots: [
           {
