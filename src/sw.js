@@ -19,7 +19,7 @@ self.addEventListener("install", (e) => {
   self.skipWaiting(); 
   e.waitUntil(
     caches.open(activeCach["static"]).then((Cache) => {
-      Cache.add("fallback.html");
+      Cache.add("/fallback.html");
     })
   );
 });
