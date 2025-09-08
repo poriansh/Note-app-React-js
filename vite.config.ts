@@ -9,6 +9,9 @@ export default defineConfig({
       strategies: "injectManifest",
       srcDir: "src",
       filename: "sw.js",
+      injectManifest: {
+        globPatterns: ["**/*.{js,css,html,png,jpg,svg}"],
+      },
       manifest: {
         short_name: "Note App",
         name: "Note App",
@@ -51,7 +54,6 @@ export default defineConfig({
       devOptions: {
         enabled: true,
       },
-     
     }),
   ],
 });
