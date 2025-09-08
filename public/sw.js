@@ -1,5 +1,3 @@
-import { precacheAndRoute } from "workbox-precaching";
-precacheAndRoute(self.__WB_MANIFEST);
 const limitInCache = (key, size) => {
   caches.open(key).then((cache) => {
     cache.keys().then((keys) => {
@@ -16,7 +14,7 @@ const activeCach = {
 };
 
 self.addEventListener("install", (e) => {
-  self.skipWaiting(); 
+  self.skipWaiting();
   e.waitUntil(
     caches.open(activeCach["static"]).then((Cache) => {
       Cache.add("/fallback.html");
@@ -26,7 +24,6 @@ self.addEventListener("install", (e) => {
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-   
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
@@ -38,7 +35,6 @@ self.addEventListener("activate", (event) => {
     })
   );
 });
-
 
 self.addEventListener("fetch", (e) => {
   const apiBase = "https://fakestoreapi.com";
