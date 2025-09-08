@@ -11,7 +11,7 @@ function Noteheader({ setsortby, sortby } : NoteheaderProps) {
 
   return (
     <div className="note-header">
-      <h2>My Note({notes.length})</h2>
+      <h2>My 2222222 Note({notes.length})</h2>
       <select value={sortby} onChange={(e) => setsortby(e.target.value)}>
         <option value="latest">latest Note</option>
         <option value="earliest">earliest Note</option>
