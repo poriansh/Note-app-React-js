@@ -1,14 +1,16 @@
 import { useState } from "react";
 import "./style/App.css";
-import "./style/index.css"
+import "./style/index.css";
 import Addnewnote from "./components/Addnewnote";
 import Notelist from "./components/Notelist";
 import Notestatus from "./components/Notestatus";
 import Noteheader from "./components/Noteheader";
-import {NoteProvider} from "./context/Notescontext";
+import { NoteProvider } from "./context/Notescontext";
 
 function App() {
   const [sortby, setsortby] = useState("latest");
+  // const { showUpdateModal, setShowUpdateModal, workbox } = useServiceWorkerAutoUpdate();
+
   return (
     <NoteProvider>
       <div className="container">
@@ -21,6 +23,11 @@ function App() {
           </div>
         </div>
       </div>
+      {/* <ModalChangeSw
+        isOpen={showUpdateModal}
+        onClose={() => setShowUpdateModal(false)}
+        workbox={workbox || undefined}
+      /> */}
     </NoteProvider>
   );
 }

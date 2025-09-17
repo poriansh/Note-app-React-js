@@ -6,6 +6,8 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
+      registerType: "autoUpdate",
+      // injectRegister: "auto",  //
       strategies: "injectManifest",
       srcDir: "src",
       filename: "sw.js",
@@ -13,18 +15,18 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,png,jpg,svg}"],
       },
       manifest: {
-        short_name: "Note App",
-        name: "Note App",
+        short_name: "SWAI",
+        name: "SWAI.AI",
         display: "standalone",
         icons: [
           {
-            src: "/web-app-manifest-192x192.png",
+            src: "/SWAILogo192x192.png",
             sizes: "192x192",
             type: "image/png",
             purpose: "any",
           },
           {
-            src: "/web-app-manifest-512x512.png",
+            src: "/SWAILogo512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any",
@@ -32,19 +34,19 @@ export default defineConfig({
         ],
         id: "/",
         start_url: "/",
-        background_color: "#3367D6",
+        background_color: "#30D5C8",
         scope: "/",
-        theme_color: "#3367D6",
-        description: "Note App Information",
+        theme_color: "#30D5C8",
+        description: "Revenue Co-pilot",
         screenshots: [
           {
-            src: "/web-app-manifest-512x512.png",
+            src: "/SWAILogo512x512.png",
             type: "image/png",
             sizes: "512x512",
             form_factor: "narrow",
           },
           {
-            src: "/320.png",
+            src: "/SWAILogo320x320.png",
             type: "image/png",
             sizes: "320x320",
             form_factor: "wide",
