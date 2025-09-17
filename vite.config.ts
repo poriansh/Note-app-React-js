@@ -8,9 +8,10 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       // injectRegister: "auto",  //
-      strategies: "injectManifest", // generateSW (پیش‌فرض):
+      strategies: "injectManifest",
+       // generateSW (پیش‌فرض):
       // Workbox به طور خودکار یه service worker برات generate می‌کنه و assetها رو با precacheAndRoute کش می‌کنه. معمولاً برای پروژه‌هایی که نیازی به دستکاری دستی service worker ندارن.
-      // هندل کردن  خوردکار کش در حالت افلاین 
+      // هندل کردن  خوردکار کش در حالت افلاین generateSW
       srcDir: "src",
       filename: "sw.js",
       injectManifest: {
