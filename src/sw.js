@@ -10,18 +10,18 @@ self.addEventListener("message", (event) => {
   }
 });
 
-const specialUrls = [
-  "https://api.staging0.swai.ai/users/getCurrentUser",
-  "https://api.swai.ai/users/getCurrentUser",
-];
+// const specialUrls = [
+//   "https://api.staging0.swai.ai/users/getCurrentUser",
+//   "https://api.swai.ai/users/getCurrentUser",
+// ];
 
-registerRoute(
-  ({ url }) => specialUrls.includes(url.href),
-  new NetworkFirst({
-    cacheName: "dynamic-api-v1",
-    networkTimeoutSeconds: 3,
-  }),
-);
+// registerRoute(
+//   ({ url }) => specialUrls.includes(url.href),
+//   new NetworkFirst({
+//     cacheName: "dynamic-api-v1",
+//     networkTimeoutSeconds: 3,
+//   }),
+// );
 // registerRoute(
 //   ({ request }) => request.destination === "image",
 //   new StaleWhileRevalidate({
