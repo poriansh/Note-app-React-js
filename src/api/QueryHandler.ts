@@ -82,11 +82,10 @@ const useMutate = ({
         method,
         url: fullUrl,
         headers: {
-          ...(isFormData ? {} : { "Content-Type": "application/json" }),
           Authorization: `Bearer ${swid}`,
           ...header,
         },
-        data: isFormData ? query : query,
+        data: query,
       });
       return {
         data: data.data,
